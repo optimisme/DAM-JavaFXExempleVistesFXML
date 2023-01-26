@@ -1,6 +1,6 @@
 # Exemple de JavaFX amb arxius FXML #
 
-En aquest projecte hi ha exemples de com fer canvis d'escena animats entre vistes d'arxius .FXML
+En aquest projecte hi ha exemples de com fer canvis d'escena animats entre vistes d'arxius .fxml
 
 ### A tenir en compte ###
 
