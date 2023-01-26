@@ -24,7 +24,9 @@ public class Scene0Controller implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private AnchorPane parentContainer;
+    private AnchorPane anchorRoot;
+    @FXML
+    private StackPane parentContainer;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -43,8 +45,12 @@ public class Scene0Controller implements Initializable {
         KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
+<<<<<<< HEAD
             // Treure la vista anterior que ja no cal que estigui a la pila
             // parentContainer.getChildren().remove(anchorRoot);
+=======
+            parentContainer.getChildren().remove(anchorRoot);
+>>>>>>> parent of 6175017 (Use anchorpane without stack)
         });
         timeline.play();
     }
