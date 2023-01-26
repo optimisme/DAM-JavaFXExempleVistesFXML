@@ -24,9 +24,7 @@ public class Scene1Controller implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private AnchorPane anchorRoot;
-    @FXML
-    private StackPane parentContainer;
+    private AnchorPane container;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,6 +36,8 @@ public class Scene1Controller implements Initializable {
         Pane root = loader.load();
 
         root.translateYProperty().set(button.getScene().getHeight());
+
+        StackPane parentContainer = (StackPane) button.getScene().getRoot();
         parentContainer.getChildren().add(root);
 
         Timeline timeline = new Timeline();
@@ -45,7 +45,7 @@ public class Scene1Controller implements Initializable {
         KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(anchorRoot);
+            parentContainer.getChildren().remove(container);
         });
         timeline.play();
     }
