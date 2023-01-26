@@ -26,6 +26,8 @@ public class Scene1Controller implements Initializable {
     @FXML
     private AnchorPane container;
 
+    // Les altres escenes ja no cal que siguin StackPane, ja s'ajunten a la primera
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
@@ -45,6 +47,7 @@ public class Scene1Controller implements Initializable {
         KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
+            // Treure la vista anterior
             parentContainer.getChildren().remove(container);
         });
         timeline.play();

@@ -28,6 +28,8 @@ public class Scene0Controller implements Initializable {
     @FXML
     private StackPane parentContainer;
 
+    // La primera escena és un StackPane, per poder contenir multiples vistes
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
@@ -45,6 +47,7 @@ public class Scene0Controller implements Initializable {
         KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
+            // Treure la vista anterior
             parentContainer.getChildren().remove(anchorRoot);
         });
         timeline.play();
