@@ -42,7 +42,10 @@ public class Scene0Controller implements Initializable {
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            // Treure la vista anterior que ja no cal que estigui a la pila
+            // parentContainer.getChildren().remove(anchorRoot);
+        });
         timeline.play();
     }
-
 }
