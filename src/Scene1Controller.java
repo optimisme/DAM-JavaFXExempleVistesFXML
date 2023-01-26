@@ -35,7 +35,6 @@ public class Scene1Controller implements Initializable {
     @FXML
     private void loadSecond(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("./assets/scene0.fxml"));
-        loader.setController(new Scene0Controller());
         Pane root = loader.load();
 
         root.translateYProperty().set(button.getScene().getHeight());
