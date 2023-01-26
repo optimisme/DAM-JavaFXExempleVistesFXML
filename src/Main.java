@@ -6,6 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author Villan
+ */
 public class Main extends Application {
 
     public static void main(String[] args) {
