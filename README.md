@@ -22,7 +22,7 @@ Tenir en compte les llicències JavaFX que hi ha en cada una de les respectives 
 
 [JavaFX](https://openjdk.org/projects/openjfx/)
 
-Codi modificat de [Afsal Villan](https://github.com/afsalashyana/JavaFX-Tutorial-Codes/tree/master/JavaFX%20Scene%20Transition)
+Codi original de [Afsal Villan](https://github.com/afsalashyana/JavaFX-Tutorial-Codes/tree/master/JavaFX%20Scene%20Transition)
 
 
 ### Captures ###
