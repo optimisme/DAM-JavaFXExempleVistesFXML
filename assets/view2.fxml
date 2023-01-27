@@ -48,7 +48,7 @@
       <ChoiceBox fx:id="choiceBox" layoutX="370.0" layoutY="99.0" prefWidth="150.0" />
       <Button fx:id="buttonWeekdays" layoutX="370.0" layoutY="67.0" mnemonicParsing="false" onAction="#setWeekdays" text="Weekdays" />
       <Button fx:id="buttonMonths" layoutX="461.0" layoutY="67.0" mnemonicParsing="false" onAction="#setMonths" text="Months" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="538.0" layoutY="99.0" prefHeight="200.0" prefWidth="234.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="538.0" layoutY="99.0" prefHeight="200.0" prefWidth="234.0">
          <content>
             <VBox fx:id="yPane" />
          </content>
