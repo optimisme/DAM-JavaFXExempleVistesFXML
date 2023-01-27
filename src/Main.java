@@ -64,7 +64,6 @@ public class Main extends Application {
 
         // Show next view, hide others
         for (Node n : list) {
-            n.translateXProperty().set(0); // Reset translation
             if (n.getId().equals(viewId)) {
                 n.setVisible(true);
                 n.setManaged(true);
@@ -90,7 +89,6 @@ public class Main extends Application {
         // Get current view
         Node curView = null;
         for (Node n : list) {
-            n.translateXProperty().set(0); // Reset translation
             if (n.isVisible()) {
                 curView = n;
             }
@@ -126,12 +124,13 @@ public class Main extends Application {
         KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
-            // Hide other views
+            // Hide other views and reset all translations
             for (Node n : list) {
                 if (!n.getId().equals(viewId)) {
                     n.setVisible(false);
                     n.setManaged(false);
                 }
+                n.translateXProperty().set(0);
             }
         });
         timeline.play();
