@@ -6,10 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-/**
- *
- * @author Villan
- */
 public class Controller1 implements Initializable {
 
     @FXML
