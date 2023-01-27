@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #00552F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller2">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #00552F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller2">
    <children>
       <Button fx:id="button01" layoutX="41.0" layoutY="444.0" mnemonicParsing="false" onAction="#toView0" prefHeight="48.0" prefWidth="202.0" style="-fx-background-color: white;" text="View0">
          <font>
@@ -37,10 +40,20 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="253.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View 2" textAlignment="CENTER" wrappingWidth="328.13671875">
+      <Text fill="WHITE" layoutX="41.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View 2" textAlignment="CENTER" wrappingWidth="258.13671875">
          <font>
             <Font name="Lato Black" size="55.0" />
          </font>
       </Text>
+      <ChoiceBox fx:id="choiceBox" layoutX="370.0" layoutY="99.0" prefWidth="150.0" />
+      <Button fx:id="buttonWeekdays" layoutX="370.0" layoutY="67.0" mnemonicParsing="false" onAction="#setWeekdays" text="Weekdays" />
+      <Button fx:id="buttonMonths" layoutX="461.0" layoutY="67.0" mnemonicParsing="false" onAction="#setMonths" text="Months" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="572.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <VBox fx:id="yPane" prefHeight="200.0" prefWidth="100.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="buttonAnimals" layoutX="571.0" layoutY="67.0" mnemonicParsing="false" onAction="#setAnimals" prefHeight="26.0" prefWidth="89.0" text="Animals" />
+      <Button fx:id="buttonBrands" layoutX="683.0" layoutY="67.0" mnemonicParsing="false" onAction="#setBrands" prefHeight="26.0" prefWidth="89.0" text="Brands" />
    </children>
 </AnchorPane>
