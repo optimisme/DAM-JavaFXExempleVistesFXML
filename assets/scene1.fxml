@@ -12,7 +12,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="253.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scene 2" textAlignment="CENTER" wrappingWidth="328.13671875">
+      <Text fill="WHITE" layoutX="253.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scene 1" textAlignment="CENTER" wrappingWidth="328.13671875">
          <font>
             <Font name="Lato Black" size="55.0" />
          </font>
