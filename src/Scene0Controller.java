@@ -24,11 +24,7 @@ public class Scene0Controller implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private AnchorPane anchorRoot;
-    @FXML
-    private StackPane parentContainer;
-
-    // La primera escena és un StackPane, per poder contenir multiples vistes
+    private AnchorPane container;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,6 +36,8 @@ public class Scene0Controller implements Initializable {
         Pane root = loader.load();
 
         root.translateXProperty().set(button.getScene().getWidth());
+
+        StackPane parentContainer = (StackPane) button.getScene().getRoot();
         parentContainer.getChildren().add(root);
 
         Timeline timeline = new Timeline();
@@ -48,7 +46,7 @@ public class Scene0Controller implements Initializable {
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
             // Treure la vista anterior
-            parentContainer.getChildren().remove(anchorRoot);
+            parentContainer.getChildren().remove(container);
         });
         timeline.play();
     }

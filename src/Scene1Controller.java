@@ -26,8 +26,6 @@ public class Scene1Controller implements Initializable {
     @FXML
     private AnchorPane container;
 
-    // Les altres escenes ja no cal que siguin StackPane, ja s'ajunten a la primera
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
