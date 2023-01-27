@@ -1,21 +1,14 @@
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-public class Controller1 implements Initializable {
+public class Controller1 {
 
     @FXML
     private Button button0, button1, button2;
     @FXML
     private AnchorPane container;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }
 
     @FXML
     private void toView0(ActionEvent event) {
