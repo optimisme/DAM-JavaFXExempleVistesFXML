@@ -94,6 +94,10 @@ public class Main extends Application {
             }
         }
 
+        if (curView.getId().equals(viewId)) {
+            return; // Do nothing if current view is the same as the next view
+        }
+
         // Get nxtView
         Node nxtView = null;
         for (Node n : list) {
@@ -102,28 +106,52 @@ public class Main extends Application {
             }
         }
 
-        double xStart = primaryStage.getScene().getWidth();
-        double xEnd = 0;
-        Node animatedView = nxtView;
-
-        // If curView is over nxtView
-        if (list.indexOf(curView) > list.indexOf(nxtView)) {
-            xStart = 0;
-            xEnd = primaryStage.getScene().getWidth();
-            animatedView = curView;
-        }
-
-        // Set nxtView visible and translate it to the left
+        // Set nxtView visible
         nxtView.setVisible(true);
         nxtView.setManaged(true);
-        nxtView.translateXProperty().set(xStart);
 
-        // Animate curView from left to right
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(animatedView.translateXProperty(), xEnd, Interpolator.EASE_BOTH);
-        KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
+        // curView will be at left by default
+        // nxtView will be at right by default
+        // animation goes from right to left by default
+        double width = primaryStage.getScene().getWidth();
+        double xLeftStart = 0;
+        double xLeftEnd = -width;
+        double xRightStart = width;
+        double xRightEnd = 0;
+        Node animatedViewLeft = curView;
+        Node animatedViewRight = nxtView;
+
+        // Translate views at the begining of the animation
+        curView.translateXProperty().set(xLeftStart);
+        nxtView.translateXProperty().set(xRightStart);
+
+        // If curView is over nxtView (swap views and animation direction)
+        if (list.indexOf(curView) > list.indexOf(nxtView)) {
+            xLeftStart = -width;
+            xLeftEnd = 0;
+            xRightStart = 0;
+            xRightEnd = width;
+            animatedViewLeft = nxtView;
+            animatedViewRight = curView;
+
+            // Translate views at the begining of the animation
+            curView.translateXProperty().set(xRightStart);
+            nxtView.translateXProperty().set(xLeftStart);
+        }
+
+        // Animate leftView from right to left
+        Timeline timelineLeft = new Timeline();
+        KeyValue kvLeft = new KeyValue(animatedViewLeft.translateXProperty(), xLeftEnd, Interpolator.EASE_BOTH);
+        KeyFrame kfLeft = new KeyFrame(Duration.seconds(0.3), kvLeft);
+        timelineLeft.getKeyFrames().add(kfLeft);
+        timelineLeft.play();
+
+        // Animate rightView from right to left
+        Timeline timelineRight = new Timeline();
+        KeyValue kvRight = new KeyValue(animatedViewRight.translateXProperty(), xRightEnd, Interpolator.EASE_BOTH);
+        KeyFrame kfRight = new KeyFrame(Duration.seconds(0.3), kvRight);
+        timelineRight.getKeyFrames().add(kfRight);
+        timelineRight.setOnFinished(t -> {
             // Hide other views and reset all translations
             for (Node n : list) {
                 if (!n.getId().equals(viewId)) {
@@ -133,7 +161,7 @@ public class Main extends Application {
                 n.translateXProperty().set(0);
             }
         });
-        timeline.play();
+        timelineRight.play();
 
         // Remove focus from buttons
         root.requestFocus();
