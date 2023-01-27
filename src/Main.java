@@ -38,7 +38,7 @@ public class Main extends Application {
 
         primaryStage = stage;
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Animació entre escenes");
+        primaryStage.setTitle("Animació entre vistes");
         primaryStage.show();
     }
 
