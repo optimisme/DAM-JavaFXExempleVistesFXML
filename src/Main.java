@@ -118,23 +118,30 @@ public class Main extends Application {
         nxtView.setVisible(true);
         nxtView.setManaged(true);
 
-        // curView will be at left by default
-        // nxtView will be at right by default
-        // animation goes from right to left by default
+        // By default, set animation to the left
         double width = primaryStage.getScene().getWidth();
         double xLeftStart = 0;
-        double xLeftEnd = -width;
-        double xRightStart = width;
+        double xLeftEnd = 0;
+        double xRightStart = 0;
         double xRightEnd = 0;
-        Node animatedViewLeft = curView;
-        Node animatedViewRight = nxtView;
+        Node animatedViewLeft = null;
+        Node animatedViewRight = null;
 
-        // Translate views at the begining of the animation
-        curView.translateXProperty().set(xLeftStart);
-        nxtView.translateXProperty().set(xRightStart);
+        if (list.indexOf(curView) < list.indexOf(nxtView)) {
 
-        // If curView is over nxtView (swap views and animation direction)
-        if (list.indexOf(curView) > list.indexOf(nxtView)) {
+            // If curView is lower than nxtView, animate to the left
+            xLeftStart = 0;
+            xLeftEnd = -width;
+            xRightStart = width;
+            xRightEnd = 0;
+            animatedViewLeft = curView;
+            animatedViewRight = nxtView;
+
+            curView.translateXProperty().set(xLeftStart);
+            nxtView.translateXProperty().set(xRightStart);
+
+        } else { 
+            // If curView is greater than nxtView, animate to the right
             xLeftStart = -width;
             xLeftEnd = 0;
             xRightStart = 0;
@@ -142,19 +149,18 @@ public class Main extends Application {
             animatedViewLeft = nxtView;
             animatedViewRight = curView;
 
-            // Translate views at the begining of the animation
             curView.translateXProperty().set(xRightStart);
             nxtView.translateXProperty().set(xLeftStart);
         }
 
-        // Animate leftView from right to left
+        // Animate leftView 
         Timeline timelineLeft = new Timeline();
         KeyValue kvLeft = new KeyValue(animatedViewLeft.translateXProperty(), xLeftEnd, Interpolator.EASE_BOTH);
         KeyFrame kfLeft = new KeyFrame(Duration.seconds(0.3), kvLeft);
         timelineLeft.getKeyFrames().add(kfLeft);
         timelineLeft.play();
 
-        // Animate rightView from right to left
+        // Animate rightView 
         Timeline timelineRight = new Timeline();
         KeyValue kvRight = new KeyValue(animatedViewRight.translateXProperty(), xRightEnd, Interpolator.EASE_BOTH);
         KeyFrame kfRight = new KeyFrame(Duration.seconds(0.3), kvRight);
