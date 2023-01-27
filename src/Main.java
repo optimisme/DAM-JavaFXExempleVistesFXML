@@ -7,6 +7,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -29,9 +30,9 @@ public class Main extends Application {
 
         views.setId("parentContainer");
 
-        addView(getClass(), "View0", "./assets/view0.fxml", true);
-        addView(getClass(), "View1", "./assets/view1.fxml", false);
-        addView(getClass(), "View2", "./assets/view2.fxml", false);
+        addView(getClass(), "View0", "./assets/view0.fxml");
+        addView(getClass(), "View1", "./assets/view1.fxml");
+        addView(getClass(), "View2", "./assets/view2.fxml");
 
         Scene scene = new Scene(views);
 
@@ -42,15 +43,22 @@ public class Main extends Application {
     }
 
     // Add one view to the list
-    public static void addView(Class<?> cls, String name, String path, boolean defaultView) throws Exception {
+    public static void addView(Class<?> cls, String name, String path) throws Exception {
+        boolean defaultView = false;
         FXMLLoader loader = new FXMLLoader(cls.getResource(path));
         Pane view = loader.load();
+        ObservableList<Node> children = views.getChildren();
+
+        // First view is the default view
+        if (children.isEmpty()) {
+            defaultView = true;
+        }
 
         view.setId(name);
         view.setVisible(defaultView);
         view.setManaged(defaultView);
 
-        views.getChildren().add(view);
+        children.add(view);
     }
 
     // Set visible view by its id (viewId)
