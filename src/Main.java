@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         final int windowWidth = 800;
-        final int windowHeight = 650;
+        final int windowHeight = 700;
 
         UtilsViews.setStage(stage);
         UtilsViews.addView(getClass(), "View0", "./assets/view0.fxml");
