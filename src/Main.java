@@ -157,17 +157,17 @@ public class Main extends Application {
         }
 
         // Animate leftView 
-        final double seconds = 0.3;
-        Timeline timelineLeft = new Timeline();
+        final double seconds = 0.4;
         KeyValue kvLeft = new KeyValue(animatedViewLeft.translateXProperty(), xLeftEnd, Interpolator.EASE_BOTH);
         KeyFrame kfLeft = new KeyFrame(Duration.seconds(seconds), kvLeft);
+        Timeline timelineLeft = new Timeline();
         timelineLeft.getKeyFrames().add(kfLeft);
         timelineLeft.play();
 
         // Animate rightView 
-        Timeline timelineRight = new Timeline();
         KeyValue kvRight = new KeyValue(animatedViewRight.translateXProperty(), xRightEnd, Interpolator.EASE_BOTH);
         KeyFrame kfRight = new KeyFrame(Duration.seconds(seconds), kvRight);
+        Timeline timelineRight = new Timeline();
         timelineRight.getKeyFrames().add(kfRight);
         timelineRight.setOnFinished(t -> {
             // Hide other views and reset all translations
