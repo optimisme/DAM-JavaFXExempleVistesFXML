@@ -17,12 +17,6 @@ public class UtilsViews {
     private static Stage stage;
     private static StackPane parentContainer = new StackPane();
 
-    // Views constructor
-    public UtilsViews() {
-        super();
-        parentContainer.setId("parentContainer");
-    }
-
     // Set stage
     public static void setStage(Stage stage) {
         UtilsViews.stage = stage;
