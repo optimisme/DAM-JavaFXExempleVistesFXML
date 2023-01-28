@@ -14,18 +14,8 @@ import javafx.util.Duration;
 
 public class UtilsViews {
 
-    private static Stage stage;
-    private static StackPane parentContainer = new StackPane();
-
-    // Set stage
-    public static void setStage(Stage stage) {
-        UtilsViews.stage = stage;
-    }
-
-    // Get viewsList
-    public static StackPane getParentContainer() {
-        return parentContainer;
-    }
+    public static Stage stage;
+    public static StackPane parentContainer = new StackPane();
 
     // Add one view to the list
     public static void addView(Class<?> cls, String name, String path) throws Exception {

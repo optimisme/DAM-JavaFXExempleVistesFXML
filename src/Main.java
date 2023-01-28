@@ -15,12 +15,13 @@ public class Main extends Application {
         final int windowWidth = 800;
         final int windowHeight = 600;
 
-        UtilsViews.setStage(stage);
+        UtilsViews.stage = stage;
+        UtilsViews.parentContainer.setStyle("-fx-font: 14 arial;");
         UtilsViews.addView(getClass(), "View0", "./assets/view0.fxml");
         UtilsViews.addView(getClass(), "View1", "./assets/view1.fxml");
         UtilsViews.addView(getClass(), "View2", "./assets/view2.fxml");
 
-        Scene scene = new Scene(UtilsViews.getParentContainer());
+        Scene scene = new Scene(UtilsViews.parentContainer);
         
         stage.setScene(scene);
         stage.setTitle("Animació entre vistes");
