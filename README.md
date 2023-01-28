@@ -1,6 +1,8 @@
-# Exemple de JavaFX amb arxius FXML #
+# Exemple de vistes JavaFX amb arxius FXML #
 
-En aquest projecte hi ha exemples de com fer canvis d'escena animats entre vistes d'arxius .fxml
+En aquest projecte hi ha exemples de com fer canvis de vista animats entre vistes d'arxius .fxml
+
+També hi ha un exemple de com contruir una llista fent servir com a plantilla un arxiu .fxml
 
 ### Compilació i funcionament ###
 
