@@ -15,12 +15,12 @@ import javafx.util.Duration;
 public class UtilsViews {
 
     private static Stage stage;
-    private static StackPane list = new StackPane();
+    private static StackPane parentContainer = new StackPane();
 
     // Views constructor
     public UtilsViews() {
         super();
-        list.setId("parentContainer");
+        parentContainer.setId("parentContainer");
     }
 
     // Set stage
@@ -29,8 +29,8 @@ public class UtilsViews {
     }
 
     // Get viewsList
-    public static StackPane getList() {
-        return list;
+    public static StackPane getParentContainer() {
+        return parentContainer;
     }
 
     // Add one view to the list
@@ -38,7 +38,7 @@ public class UtilsViews {
         boolean defaultView = false;
         FXMLLoader loader = new FXMLLoader(cls.getResource(path));
         Pane view = loader.load();
-        ObservableList<Node> children = list.getChildren();
+        ObservableList<Node> children = parentContainer.getChildren();
 
         // First view is the default view
         if (children.isEmpty()) {
