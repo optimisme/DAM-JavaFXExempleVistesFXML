@@ -30,9 +30,6 @@ public class Controller2 implements Initializable {
     String animals[] = { "Dog", "Cat", "Horse", "Cow", "Pig" };
     String brands[] = { "Audi", "BMW", "Citroen", "Fiat", "Ford", "Honda", "Hyundai", "Kia", "Mazda", "Mercedes", "Nissan", "Opel", "Peugeot", "Renault", "Seat", "Skoda", "Suzuki", "Toyota", "Volkswagen", "Volvo" };
     
-    // Declare an array of arrays of strings
-    ArrayList<ArrayList<String>> list = new ArrayList<>();
-
     // Called when the FXML file is loaded
     @Override
     public void initialize(URL url, ResourceBundle rb) {
