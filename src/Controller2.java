@@ -1,3 +1,4 @@
+import java.net.URL;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -136,12 +137,14 @@ public class Controller2 {
         list.add(new ArrayList<String>() { { add("Reptiles"); add("Turtle"); add("brown"); } });
         list.add(new ArrayList<String>() { { add("Reptiles"); add("Crocodile"); add("green"); } });
 
+        URL resource = this.getClass().getResource("./assets/listItem.fxml");
+
         yPane.getChildren().clear();
         for (ArrayList<String> listElement : list) {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("./assets/listItem.fxml"));
+            FXMLLoader loader = new FXMLLoader(resource);
             Parent itemTemplate = loader.load();
-
             ControllerListItem itemController = loader.getController();
+            
             itemController.setTitle(listElement.get(1));
             itemController.setSubtitle(listElement.get(0));
             itemController.setCircleColor(listElement.get(2));
