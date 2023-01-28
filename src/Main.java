@@ -27,5 +27,8 @@ public class Main extends Application {
         stage.setMinWidth(windowWidth);
         stage.setMinHeight(windowHeight);
         stage.show();
+
+        Image icon = new Image("file:./assets/icon.png");
+        stage.getIcons().add(icon);
     }
 }
