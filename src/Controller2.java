@@ -33,6 +33,7 @@ public class Controller2 implements Initializable {
     // Declare an array of arrays of strings
     ArrayList<ArrayList<String>> list = new ArrayList<>();
 
+    // Called when the FXML file is loaded
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         choiceBox.getItems().addAll(fruits);
