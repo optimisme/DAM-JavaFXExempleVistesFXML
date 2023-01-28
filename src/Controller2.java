@@ -23,32 +23,32 @@ public class Controller2 {
 
     @FXML
     private void toView0(ActionEvent event) {
-        Main.setView("View0");
+        UtilsViews.setView("View0");
     }
     
     @FXML
     private void toView1(ActionEvent event) {
-        Main.setView("View1");
+        UtilsViews.setView("View1");
     }
 
     @FXML
     private void toView2(ActionEvent event) {
-        Main.setView("View2");
+        UtilsViews.setView("View2");
     }
 
     @FXML
     private void animateToView0(ActionEvent event) {
-        Main.setViewAnimating("View0");
+        UtilsViews.setViewAnimating("View0");
     }
     
     @FXML
     private void animateToView1(ActionEvent event) {
-        Main.setViewAnimating("View1");
+        UtilsViews.setViewAnimating("View1");
     }
 
     @FXML
     private void animateToView2(ActionEvent event) {
-        Main.setViewAnimating("View2");
+        UtilsViews.setViewAnimating("View2");
     }
 
     @FXML
