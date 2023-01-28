@@ -67,7 +67,7 @@
             </VBox>
          </children>
       </HBox>
-      <Text fill="WHITE" layoutX="41.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View 2" textAlignment="CENTER" wrappingWidth="258.13671875" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="65.0">
+      <Text fill="WHITE" layoutX="41.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View 2" wrappingWidth="258.13671875" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="65.0">
          <font>
             <Font name="Lato Black" size="55.0" />
          </font>
