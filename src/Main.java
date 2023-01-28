@@ -11,6 +11,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        final int windowWidth = 800;
+        final int windowHeight = 650;
+
         UtilsViews.setStage(stage);
         UtilsViews.addView(getClass(), "View0", "./assets/view0.fxml");
         UtilsViews.addView(getClass(), "View1", "./assets/view1.fxml");
@@ -20,8 +23,8 @@ public class Main extends Application {
         
         stage.setScene(scene);
         stage.setTitle("Animació entre vistes");
-        stage.setMinWidth(800);
-        stage.setMinHeight(650);
+        stage.setMinWidth(windowWidth);
+        stage.setMinHeight(windowHeight);
         stage.show();
     }
 }
