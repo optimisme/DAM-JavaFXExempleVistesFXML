@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -26,5 +27,8 @@ public class Main extends Application {
         stage.setMinWidth(windowWidth);
         stage.setMinHeight(windowHeight);
         stage.show();
+
+        Image icon = new Image("file:./assets/icon.png");
+        stage.getIcons().add(icon);
     }
 }
