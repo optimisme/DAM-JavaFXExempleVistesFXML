@@ -39,6 +39,8 @@ public class Main extends Application {
         primaryStage = stage;
         primaryStage.setScene(scene);
         primaryStage.setTitle("Animació entre vistes");
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(650);
         primaryStage.show();
     }
 
@@ -141,6 +143,7 @@ public class Main extends Application {
             nxtView.translateXProperty().set(xRightStart);
 
         } else { 
+
             // If curView is greater than nxtView, animate to the right
             xLeftStart = -width;
             xLeftEnd = 0;
@@ -154,16 +157,17 @@ public class Main extends Application {
         }
 
         // Animate leftView 
+        final double seconds = 0.3;
         Timeline timelineLeft = new Timeline();
         KeyValue kvLeft = new KeyValue(animatedViewLeft.translateXProperty(), xLeftEnd, Interpolator.EASE_BOTH);
-        KeyFrame kfLeft = new KeyFrame(Duration.seconds(0.3), kvLeft);
+        KeyFrame kfLeft = new KeyFrame(Duration.seconds(seconds), kvLeft);
         timelineLeft.getKeyFrames().add(kfLeft);
         timelineLeft.play();
 
         // Animate rightView 
         Timeline timelineRight = new Timeline();
         KeyValue kvRight = new KeyValue(animatedViewRight.translateXProperty(), xRightEnd, Interpolator.EASE_BOTH);
-        KeyFrame kfRight = new KeyFrame(Duration.seconds(0.3), kvRight);
+        KeyFrame kfRight = new KeyFrame(Duration.seconds(seconds), kvRight);
         timelineRight.getKeyFrames().add(kfRight);
         timelineRight.setOnFinished(t -> {
             // Hide other views and reset all translations

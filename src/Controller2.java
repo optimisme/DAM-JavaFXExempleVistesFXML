@@ -142,8 +142,8 @@ public class Controller2 {
             Parent itemTemplate = loader.load();
 
             ControllerListItem itemController = loader.getController();
-            itemController.setTitle(listElement.get(0));
-            itemController.setSubtitle(listElement.get(1));
+            itemController.setTitle(listElement.get(1));
+            itemController.setSubtitle(listElement.get(0));
             itemController.setCircleColor(listElement.get(2));
 
             yPane.getChildren().add(itemTemplate);
