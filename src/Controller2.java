@@ -18,9 +18,11 @@ public class Controller2 implements Initializable {
     @FXML
     private Button button0, button1, button2, buttonWeekdays, buttonMonths, buttonAnimals, buttonBrands, buttonFXML;
     @FXML
+    private Label choiceLabel;
+    @FXML
     private AnchorPane container;
     @FXML
-    private ChoiceBox<String> choiceBox = new ChoiceBox<>();
+    private ChoiceBox<String> choiceBox;
     @FXML
     private VBox yPane = new VBox();
 
@@ -33,8 +35,15 @@ public class Controller2 implements Initializable {
     // Called when the FXML file is loaded
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        String value = "Apple";
+        choiceLabel.setText(value);
+
         choiceBox.getItems().addAll(fruits);
-        choiceBox.setValue("Apple");
+        choiceBox.setValue(value);
+        choiceBox.setOnAction((event) -> {
+            choiceLabel.setText(choiceBox.getSelectionModel().getSelectedItem());
+        });
     }
 
     @FXML
@@ -69,16 +78,26 @@ public class Controller2 implements Initializable {
 
     @FXML
     private void setWeekdays (ActionEvent event) {
+
+        String value = "Monday";
+
         choiceBox.getItems().clear();
         choiceBox.getItems().addAll(weekdays);
-        choiceBox.setValue("Monday");
+        choiceBox.setValue(value);
+
+        choiceLabel.setText(value);
     }
 
     @FXML
     private void setMonths (ActionEvent event) {
+
+        String value = "January";
+
         choiceBox.getItems().clear();
         choiceBox.getItems().addAll(months);
-        choiceBox.setValue("January");
+        choiceBox.setValue(value);
+
+        choiceLabel.setText(value);
     }
 
     @FXML
