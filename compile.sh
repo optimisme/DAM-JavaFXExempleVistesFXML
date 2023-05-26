@@ -77,9 +77,13 @@ fi
 # Create the 'run.sh' file
 cat > run.sh << EOF
 #!/bin/bash
-
 java $ICON --module-path $MODULEPATH --add-modules javafx.controls,javafx.fxml -cp Project.jar:$CLASSPATH Main
+EOF
 
+# Create the 'run.bat' file
+cat > run.bat << EOF
+echo @echo off
+echo java %ICON% --module-path %MODULEPATH% --add-modules javafx.controls,javafx.fxml -cp Project.jar;%CLASSPATH% Main
 EOF
 
 # Fem l'arxiu executable

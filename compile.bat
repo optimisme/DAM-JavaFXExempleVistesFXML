@@ -7,58 +7,72 @@ rem Get into the development directory
 cd %folderDevelopment%
 
 rem Remove any existing .class files from the bin directory
-rmdir /s /q .\bin
+rd /s /q .\bin
 
 rem Create the bin directory if it doesn't exist
 mkdir .\bin
 
 rem Copy the assets directory to the bin directory
-xcopy .\assets .\bin /E /I
-xcopy .\icons .\bin /E /I
+xcopy /E .\assets .\bin\assets
+xcopy /E .\icons .\bin\icons
 
 rem Generate the CLASSPATH by iterating over JAR files in the lib directory and its subdirectories
-set "lib_dir=lib"
-set "jar_files="
+set lib_dir=lib
+set class_path=
 
 rem Find all JAR files in the lib directory and its subdirectories
 for /R "%lib_dir%" %%F in (*.jar) do (
-    if not "%%~nxF" == "javafx" (
-        set "jar_files=!jar_files!;%%F"
+    echo %%F | find /i "javafx" > nul
+    if errorlevel 1 (
+        set "class_path=%class_path%;%%F"
     )
 )
 
-rem Remove the leading ';' from the jar_files
-set "class_path=%jar_files:~1%"
+rem Remove the leading ';' from the class_path
+set "class_path=%class_path:~1%"
 
 rem Generate MODULEPATH and ICON depending on the OS and architecture
 if "%OSTYPE%"=="linux-gnu" (
-    set "MODULEPATH=./lib/javafx-linux/lib"
-    set "ICON="
+    set MODULEPATH=./lib/javafx-linux/lib
+    set ICON=
+)
+
+if "%OSTYPE%"=="darwin*" (
+    if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
+        set MODULEPATH=./lib/javafx-osx-intel/lib
+        set ICON=-Xdock:icon=icons/iconOSX.png
+    ) else if "%PROCESSOR_ARCHITECTURE%"=="ARM64" (
+        set MODULEPATH=./lib/javafx-osx-arm/lib
+        set ICON=-Xdock:icon=iconOSX.png
+    )
 )
 
 rem Compile the Java source files and place the .class files in the bin directory
-javac -d .\bin .\src\*.java --module-path %MODULEPATH% --add-modules javafx.controls,javafx.fxml
+javac -d .\bin\ .\src\*.java --module-path "%MODULEPATH%" --add-modules javafx.controls,javafx.fxml
 
 rem Create the Project.jar file with the specified manifest file and the contents of the bin directory
 jar cfm .\Project.jar .\Manifest.txt -C bin .
 
 rem Remove any .class files from the bin directory
-rmdir /s /q .\bin
+rd /s /q .\bin
 
 rem Get out of the development directory
 cd ..
 
 rem Move the Project.jar file to the release directory
-rmdir /s /q .\%folderRelease%
+rd /s /q .\%folderRelease%
 mkdir .\%folderRelease%
 move .\%folderDevelopment%\Project.jar .\%folderRelease%\Project.jar
-xcopy .\%folderDevelopment%\lib .\%folderRelease%\lib /E /I
+xcopy /E .\%folderDevelopment%\lib .\%folderRelease%\lib
+
+rem If OSX copy the icon to the release directory
+if "%OSTYPE%"=="darwin*" (
+    copy .\%folderDevelopment%\icons\iconOSX.png .\%folderRelease%\iconOSX.png
+)
 
 rem Create the 'run.bat' file
-(
-    echo @echo off
-    echo java %ICON% --module-path %MODULEPATH% --add-modules javafx.controls,javafx.fxml -cp Project.jar;%CLASSPATH% Main
-) > .\%folderRelease%\run.bat
+echo @echo off > run.bat
+echo java %ICON% --module-path %MODULEPATH% --add-modules javafx.controls,javafx.fxml -cp Project.jar;%CLASSPATH% Main >> run.bat
 
 rem Run the Project.jar file
 cd .\%folderRelease%
